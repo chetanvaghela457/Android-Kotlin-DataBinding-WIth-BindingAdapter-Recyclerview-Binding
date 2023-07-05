@@ -11,4 +11,6 @@ Features:
 - Clear and Understandable Code
 - OnTextChange Validation on Recyclerview Item Edittext
 
+![Demo Binding](https://github.com/chetan532/Android-Kotlin-DataBinding-WIth-BindingAdapter-Recyclerview-Binding/blob/main/demo/demo_video.gif)
+
   
