@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="productsModel"
+            type="com.databinding.databindingwithbindingadapterrecyclerviewbinding.model.ProductData" />
+
+        <variable
+            name="viewModel"
+            type="com.databinding.databindingwithbindingadapterrecyclerviewbinding.viewmodel.ProductsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemFridge1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@{productsModel.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearFridge1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@{productsModel.valid ? @drawable/temp_item_bg : @drawable/temp_error_item_bg}"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:afterTextChanged="@{(text) -> viewModel.onDataTextChanged(text,productsModel)}"
+                    android:background="@null"
+                    android:digits="0123456789"
+                    android:gravity="center"
+                    android:hint="@string/add_price"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:text="@={productsModel.price}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/textGray"
+                    android:textSize="@dimen/_12ssp"
+                    />
+
+                <View
+                    android:id="@+id/view1Color"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@color/black" />
+
+                <ImageView
+                    android:id="@+id/celciusImg1"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/indian_rupee_symbol" />
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tempError1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/product_price_should_be"
+            android:textColor="@color/error_color"
+            android:textSize="@dimen/_11ssp"
+            android:visibility="@{productsModel.valid ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/const1"
+            app:layout_constraintTop_toBottomOf="@+id/const1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
